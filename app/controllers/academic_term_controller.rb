@@ -1,0 +1,2 @@
+class AcademicTermController < ApplicationController
+end

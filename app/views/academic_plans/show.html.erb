@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Academic plan note:</strong>
+  <%= @academic_plan.academic_plan_note %>
+</p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @academic_plan.student_id %>
+</p>
+
+<p>
+  <strong>Advisor:</strong>
+  <%= @academic_plan.advisor_id %>
+</p>
+
+<%= link_to 'Edit', edit_academic_plan_path(@academic_plan) %> |
+<%= link_to 'Back', academic_plans_path %>

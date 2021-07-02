@@ -1,0 +1,2 @@
+class TermPlanController < ApplicationController
+end

@@ -1,0 +1,32 @@
+<%= form_with(model: academic_plan) do |form| %>
+  <% if academic_plan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(academic_plan.errors.count, "error") %> prohibited this academic_plan from being saved:</h2>
+
+      <ul>
+        <% academic_plan.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :academic_plan_note %>
+    <%= form.text_area :academic_plan_note %>
+  </div>
+
+  <div class="field">
+    <%= form.label :student_id %>
+    <%= form.text_field :student_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :advisor_id %>
+    <%= form.text_field :advisor_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

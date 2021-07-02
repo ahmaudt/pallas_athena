@@ -1,0 +1,2 @@
+class AdvisorsController < ApplicationController
+end

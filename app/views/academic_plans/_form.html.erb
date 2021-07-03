@@ -12,19 +12,26 @@
   <% end %>
 
   <div class="field">
+    <%= form.fields_for :courses do |course_form| %>
+      <%= course_form.label :course_code %>
+      <%= course_form.text_field :course_code %>
+    <% end %>
+  </div>
+
+  <div class="field">
     <%= form.label :academic_plan_note %>
     <%= form.text_area :academic_plan_note %>
   </div>
 
-  <div class="field">
-    <%= form.label :student_id %>
-    <%= form.text_field :student_id %>
-  </div>
+<!--  <div class="field">-->
+    <%#= form.label :student_id %>
+    <%#= form.text_field :student_id %>
+<!--  </div>-->
 
-  <div class="field">
-    <%= form.label :advisor_id %>
-    <%= form.text_field :advisor_id %>
-  </div>
+<!--  <div class="field">-->
+    <%#= form.label :advisor_id %>
+    <%#= form.text_field :advisor_id %>
+<!--  </div>-->
 
   <div class="actions">
     <%= form.submit %>

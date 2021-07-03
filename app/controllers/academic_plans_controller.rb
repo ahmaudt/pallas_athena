@@ -13,6 +13,7 @@ class AcademicPlansController < ApplicationController
   # GET /academic_plans/new
   def new
     @academic_plan = AcademicPlan.new
+    7.times { @academic_plan.courses.build }
   end
 
   # GET /academic_plans/1/edit

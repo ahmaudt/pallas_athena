@@ -1,0 +1,41 @@
+<%= form_with(model: advisor) do |form| %>
+  <% if advisor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(advisor.errors.count, "error") %> prohibited this advisor from being saved:</h2>
+
+      <ul>
+        <% advisor.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :ugamyid, 'UGA MyID' %>
+    <%= form.text_field :ugamyid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= form.fields_for :college, @advisor.build_college do |college_field| %>
+      <div class="field">
+        <%= college_field.label :college_code, "College Code" %>
+        <%= college_field.text_field :college_code %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

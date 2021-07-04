@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :advisors
   resources :academic_plans
   resources :students do
     resources :academic_plans

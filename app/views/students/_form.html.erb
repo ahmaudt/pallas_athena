@@ -27,6 +27,7 @@
   </div>
 
   <div class="field">
+    <%= form.label :major_id, "Select Student's Major" %>
     <%= form.collection_select :major_id, Major.all, :id, :major_code %>
   </div>
 

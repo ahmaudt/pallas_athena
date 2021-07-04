@@ -31,6 +31,7 @@
   </div>
 
   <div class="field">
+    <%= form.label :advisor_id, "Select Student's Advisor" %>
     <%= form.collection_select :advisor_id, Advisor.all, :id, :first_name %>
   </div>
 

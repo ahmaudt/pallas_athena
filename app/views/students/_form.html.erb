@@ -27,12 +27,11 @@
   </div>
 
   <div class="field">
-    <%= form.label :major_id %>
-    <%= form.text_field :major_id %>
+    <%= form.collection_select :major_id, Major.all, :id, :major_code %>
   </div>
 
   <div class="field">
-    <%= form.collection_select :advisor_id, Advisor.all, :id, :first_name %>
+    <%= form.collection_select :advisor_id, Advisor.all, :id, :first_name %><br>
   </div>
 
   <div class="actions">

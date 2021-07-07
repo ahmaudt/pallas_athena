@@ -1,8 +1,30 @@
+# frozen_string_literal: true
+
 class Student < ApplicationRecord
-  belongs_to :matriculation_term, :class_name => 'AcademicTerm'
-  belongs_to :graduation_term, :class_name => 'AcademicTerm'
-  has_many :academic_terms
-  belongs_to :major
+  belongs_to :matriculation_term, class_name: 'AcademicTerm'
+  belongs_to :graduation_term, class_name: 'AcademicTerm'
   belongs_to :advisor
+  belongs_to :major
   has_many :academic_plans, dependent: :destroy
+
+  accepts_nested_attributes_for :matriculation_term
+  accepts_nested_attributes_for :graduation_term
+
+  def graduation_term_attributes=(grad_hash)
+    if grad_hash['academic_term_code'].present?
+      grad_hash.values.each do |grad|
+        grad_term = AcademicTerm.find_or_create_by(academic_term_code: grad)
+        self.graduation_term = grad_term
+      end
+    end
+  end
+
+  def matriculation_term_attributes=(grad_hash)
+    if grad_hash['academic_term_code'].present?
+      grad_hash.values.each do |grad|
+        grad_term = AcademicTerm.find_or_create_by(academic_term_code: grad)
+        self.matriculation_term = grad_term
+      end
+    end
+  end
 end

@@ -32,6 +32,30 @@
   </div>
 
   <div class="field">
+    <%= form.fields_for :matriculation_term, @student.build_matriculation_term do |matriculation| %>
+      <%= matriculation.label :academic_term_code, 'Matriculation Term' %>
+      <%= matriculation.text_field :academic_term_code, list: "academic_term_code_autocomplete"%>
+        <datalist id="academic_term_code_autocomplete">
+          <% AcademicTerm.all.each do |term| %>
+            <option value="<%= term.academic_term_code %>"><%= term.academic_term %></option>
+          <% end %>
+        </datalist>
+      <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.fields_for :graduation_term, @student.build_graduation_term do |graduation| %>
+      <%= graduation.label :academic_term_code, 'Graduation Term' %>
+      <%= graduation.text_field :academic_term_code, list: "graduation_term_code_autocomplete"%>
+      <datalist id="graduation_term_code_autocomplete">
+        <% AcademicTerm.all.each do |term| %>
+          <option value="<%= term.academic_term_code %>"><%= term.academic_term %></option>
+        <% end %>
+      </datalist>
+    <% end %>
+  </div>
+
+  <div class="field">
     <%= form.label :advisor_id, "Select Student's Advisor" %>
     <%= form.collection_select :advisor_id, Advisor.all, :id, :first_name %>
   </div>

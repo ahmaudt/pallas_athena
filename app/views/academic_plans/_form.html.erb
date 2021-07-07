@@ -1,7 +1,7 @@
-<%= form_with(model: academic_plan) do |form| %>
+<%= form_with(model: [@student, academic_plan]) do |form| %>
   <% if academic_plan.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(academic_plan.errors.count, "error") %> prohibited this academic_plan from being saved:</h2>
+      <h2><%= pluralize(academic_plans.errors.count, "error") %> prohibited this academic_plan from being saved:</h2>
 
       <ul>
         <% academic_plan.errors.each do |error| %>

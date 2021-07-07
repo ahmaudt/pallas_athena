@@ -1,4 +1,4 @@
+# frozen_string_literal: true
+
 class AcademicTerm < ApplicationRecord
-  belongs_to :student
-  has_many :courses
 end

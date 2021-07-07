@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_03_233952) do
+ActiveRecord::Schema.define(version: 2021_07_06_000339) do
 
   create_table "academic_plans", force: :cascade do |t|
     t.text "academic_plan_note"
@@ -23,13 +23,10 @@ ActiveRecord::Schema.define(version: 2021_07_03_233952) do
   end
 
   create_table "academic_terms", force: :cascade do |t|
-    t.string "academic_semester"
-    t.integer "academic_year"
     t.integer "academic_term_code"
-    t.integer "student_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["student_id"], name: "index_academic_terms_on_student_id"
+    t.string "academic_term"
   end
 
   create_table "advisors", force: :cascade do |t|

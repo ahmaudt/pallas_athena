@@ -63,6 +63,7 @@ class AcademicPlansController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
+
   def get_student
     @student = Student.find(params[:student_id])
   end
@@ -74,6 +75,7 @@ class AcademicPlansController < ApplicationController
   # Only allow a list of trusted parameters through.
   def student_academic_plan_params
     params.require(:academic_plan).permit(:academic_plan_note, :student_id,
-                                          :advisor_id, courses_attributes: [:course_code])
+                                          :advisor_id, courses_attributes: [:course_code],
+                                          academic_terms_attributes: [:academic_term_code])
   end
 end

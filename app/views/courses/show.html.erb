@@ -1,38 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>UGA MyID:</strong>
-  <%= @course.ugamyid %>
+  <strong>Course Code:</strong>
+  <%= @course.course_code %>
 </p>
 
 <p>
-  <strong>Preferred name:</strong>
-  <%= @student.preferred_name %>
+  <strong>Course Title:</strong>
+  <%= @course.course_title %>
 </p>
 
 <p>
-  <strong>Last name:</strong>
-  <%= @student.last_name %>
+  <strong>Credit Hrs:</strong>
+  <%= @course.credit_hrs %>
 </p>
 
 <p>
-  <strong>Major:</strong>
-  <%= @student.major_in %>
-</p>
-
-<p>
-  <strong>Matriculation Term:</strong>
-  <%= @student.start_term %>
-</p>
-
-<p>
-  <strong>Graduation Term:</strong>
-  <%= @student.grad_term %>
-</p>
-
-<p>
-  <strong>Advisor:</strong>
-  <%= @student.advisor.first_name %>
+  <strong>Term Offered:</strong>
+  <%= @course.term_offered %>
 </p>
 
 <%= link_to 'Edit', edit_course_path(@course) %> |

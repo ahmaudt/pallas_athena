@@ -19,7 +19,7 @@
         <td><%= course.course_code %></td>
         <td><%= course.course_title %></td>
         <td><%= course.credit_hrs %></td>
-        <td><%= course.course_term.academic_term %></td>
+        <td><%= course.term_offered %></td>
         <td><%= link_to 'Show', course %></td>
         <td><%= link_to 'Edit', edit_course_path(course) %></td>
         <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>

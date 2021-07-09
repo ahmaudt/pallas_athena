@@ -1,3 +1,3 @@
 class Course < ApplicationRecord
-  has_one :academic_term
+  belongs_to :course_term, class_name: 'AcademicTerm'
 end

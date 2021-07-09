@@ -76,6 +76,6 @@ class AcademicPlansController < ApplicationController
   def student_academic_plan_params
     params.require(:academic_plan).permit(:academic_plan_note, :student_id,
                                           :advisor_id, courses_attributes: [:course_code],
-                                          academic_terms_attributes: [:academic_term_code])
+                                          advised_term_attributes: [:academic_term_code])
   end
 end

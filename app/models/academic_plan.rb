@@ -12,7 +12,7 @@ class AcademicPlan < ApplicationRecord
     if advised_term_hash['academic_term_code'].present?
       advised_term_hash.values.each do |advised_term|
         term = AcademicTerm.find_or_create_by(academic_term_code: advised_term)
-        self.academic_term = term
+        self.advised_term = term
       end
     end
   end

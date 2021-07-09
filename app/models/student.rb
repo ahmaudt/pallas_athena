@@ -27,4 +27,19 @@ class Student < ApplicationRecord
       end
     end
   end
+
+  def major_in
+    student_major = self.major
+    student_major.major_title
+  end
+
+  def start_term
+    term_start = self.matriculation_term
+    term_start.academic_term
+  end
+
+  def grad_term
+    term_grad = self.graduation_term
+    term_grad.academic_term
+  end
 end

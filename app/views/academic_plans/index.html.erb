@@ -13,14 +13,13 @@
   </thead>
 
   <tbody>
-    <% @academic_plans.each do |academic_plan| %>
+    <% @student.academic_plans.each do |academic_plan| %>
       <tr>
         <td><%= academic_plan.academic_plan_note %></td>
         <td><%= academic_plan.student_id %></td>
-        <td><%= academic_plan.advisor_id %></td>
-        <td><%= link_to 'Show', academic_plan %></td>
-        <td><%= link_to 'Edit', edit_academic_plan_path(academic_plan) %></td>
-        <td><%= link_to 'Destroy', academic_plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', student_academic_plan_path(academic_plan.student, academic_plan) %></td>
+        <td><%= link_to 'Edit', edit_student_academic_plan_path(academic_plan.student, academic_plan) %></td>
+        <td><%= link_to 'Destroy', student_academic_plan_path(academic_plan.student, academic_plan), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

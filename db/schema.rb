@@ -14,11 +14,11 @@ ActiveRecord::Schema.define(version: 2021_07_02_203321) do
 
   create_table "academic_plans", force: :cascade do |t|
     t.text "academic_plan_note"
-    t.integer "academic_term_id", null: false
+    t.integer "advised_term_id"
     t.integer "student_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["academic_term_id"], name: "index_academic_plans_on_academic_term_id"
+    t.index ["advised_term_id"], name: "index_academic_plans_on_advised_term_id"
     t.index ["student_id"], name: "index_academic_plans_on_student_id"
   end
 
@@ -90,7 +90,6 @@ ActiveRecord::Schema.define(version: 2021_07_02_203321) do
     t.index ["student_id"], name: "index_term_plans_on_student_id"
   end
 
-  add_foreign_key "academic_plans", "academic_terms"
   add_foreign_key "academic_plans", "students"
   add_foreign_key "advisors", "colleges"
   add_foreign_key "majors", "colleges"

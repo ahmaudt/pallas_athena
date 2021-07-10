@@ -1,7 +1,7 @@
 <%= form_with(model: [@student, academic_plan]) do |form| %>
   <% if academic_plan.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(academic_plans.errors.count, "error") %> prohibited this academic_plan from being saved:</h2>
+      <h2><%= pluralize(academic_plan.errors.count, "error") %> prohibited this academic_plan from being saved:</h2>
 
       <ul>
         <% academic_plan.errors.each do |error| %>
@@ -14,7 +14,12 @@
   <div class="field">
     <%= form.fields_for :courses do |course_form| %>
       <%= course_form.label :course_code %>
-      <%= course_form.text_field :course_code %>
+      <%= course_form.text_field :course_code, list: "course_code_autocomplete" %>
+        <datalist id="course_code_autocomplete">
+          <% Course.all.each do |course| %>
+            <option value="<%= course.course_code %>"><%= course.course_code %> - <%= course.course_title %></option>
+          <% end %>
+        </datalist>
     <% end %>
   </div>
 
@@ -24,7 +29,7 @@
   </div>
 
   <div class="field">
-    <%= form.fields_for :advised_term, @academic_plan.build_advised_term do |advised| %>
+    <%= form.fields_for :advised_term do |advised| %>
       <%= advised.label :academic_term_code, 'Advised Term' %>
       <%= advised.text_field :academic_term_code, list: "academic_term_autocomplete" %>
         <datalist id="academic_term_autocomplete">
@@ -35,10 +40,7 @@
     <% end %>
   </div>
 
-<!--  <div class="field">-->
-    <%#= form.label :student_id %>
-    <%#= form.text_field :student_id %>
-<!--  </div>-->
+
 
 <!--  <div class="field">-->
     <%#= form.label :advisor_id %>

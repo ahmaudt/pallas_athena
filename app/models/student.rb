@@ -22,8 +22,8 @@ class Student < ApplicationRecord
   def matriculation_term_attributes=(grad_hash)
     if grad_hash['academic_term_code'].present?
       grad_hash.values.each do |grad|
-        grad_term = AcademicTerm.find_or_create_by(academic_term_code: grad)
-        self.matriculation_term = grad_term
+        matric_term = AcademicTerm.find_or_create_by(academic_term_code: grad)
+        self.matriculation_term = matric_term
       end
     end
   end

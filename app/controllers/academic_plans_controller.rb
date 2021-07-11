@@ -54,8 +54,6 @@ class AcademicPlansController < ApplicationController
 
   # DELETE /academic_plans/1 or /academic_plans/1.json
   def destroy
-    @academic_plan = @student.academic_plans.find(params[:student_id])
-    binding.pry
     @academic_plan.destroy
     respond_to do |format|
       format.html { redirect_to student_academic_plans_path, notice: 'Academic plan was successfully destroyed.' }

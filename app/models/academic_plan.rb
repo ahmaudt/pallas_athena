@@ -1,11 +1,11 @@
 class AcademicPlan < ApplicationRecord
   belongs_to :student
-  has_many :term_plans, dependent: :destroy
-  has_many :courses, through: :term_plans
+  has_many :course_plans, dependent: :destroy
+  has_many :courses, through: :course_plans
   belongs_to :advised_term, class_name: 'AcademicTerm'
 
   accepts_nested_attributes_for :courses
-  accepts_nested_attributes_for :term_plans
+  accepts_nested_attributes_for :course_plans
   accepts_nested_attributes_for :advised_term
 
   def advised_term_attributes=(advised_term_hash)
@@ -13,6 +13,15 @@ class AcademicPlan < ApplicationRecord
       advised_term_hash.values.each do |advising_term|
         term = AcademicTerm.find_or_create_by(academic_term_code: advising_term)
         self.advised_term = term
+      end
+    end
+  end
+
+  def courses_attributes=(course_hash)
+    if course_hash['course_code'].present?
+      course_hash.values.each do |advised_course|
+        course = Course.find_or_create_by(course_code: advised_course)
+        self.courses << advised_course
       end
     end
   end

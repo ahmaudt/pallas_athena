@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_02_203321) do
+ActiveRecord::Schema.define(version: 2021_07_11_154041) do
 
   create_table "academic_plans", force: :cascade do |t|
     t.text "academic_plan_note"
@@ -42,6 +42,11 @@ ActiveRecord::Schema.define(version: 2021_07_02_203321) do
   create_table "colleges", force: :cascade do |t|
     t.string "college_code"
     t.text "college_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "course_plans", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

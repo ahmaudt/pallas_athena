@@ -5,7 +5,6 @@ class AcademicPlan < ApplicationRecord
   belongs_to :advised_term, class_name: 'AcademicTerm'
 
   accepts_nested_attributes_for :courses
-  accepts_nested_attributes_for :course_plans
   accepts_nested_attributes_for :advised_term
 
   def advised_term_attributes=(advised_term_hash)
@@ -18,9 +17,10 @@ class AcademicPlan < ApplicationRecord
   end
 
   def courses_attributes=(course_hash)
+    binding.pry
     if course_hash['course_code'].present?
       course_hash.values.each do |advised_course|
-        course = Course.find_or_create_by(course_code: advised_course)
+        course = Course.find_or_create_by(course_code: [advised_course])
         self.courses << advised_course
       end
     end

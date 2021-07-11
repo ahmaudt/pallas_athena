@@ -5,10 +5,29 @@
   <%= @academic_plan.academic_plan_note %>
 </p>
 
+<table>
+  <thead>
+    <tr>
+      <th>Course</th>
+      <th>Course Title</th>
+      <th>Credit hours</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @academic_plan.courses.each do |plan_course| %>
+    <tr>
+      <td><%= plan_course.course_code %></td>
+      <td><%= plan_course.course_title %></td>
+      <td><%= plan_course.credit_hrs %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
 <p>
   <strong>Student:</strong>
   <%= @academic_plan.student_id %>
 </p>
 
-<%= link_to 'Edit', edit_academic_plan_path(@academic_plan) %> |
-<%= link_to 'Back', academic_plans_path %>
+<%= link_to 'Edit', edit_student_academic_plan_path(@student, @academic_plan) %> |
+<%= link_to 'Back', student_academic_plans_path %>

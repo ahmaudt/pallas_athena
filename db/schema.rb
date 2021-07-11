@@ -47,8 +47,12 @@ ActiveRecord::Schema.define(version: 2021_07_11_154041) do
   end
 
   create_table "course_plans", force: :cascade do |t|
+    t.integer "course_id"
+    t.integer "academic_plan_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["academic_plan_id"], name: "index_course_plans_on_academic_plan_id"
+    t.index ["course_id"], name: "index_course_plans_on_course_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -86,20 +90,11 @@ ActiveRecord::Schema.define(version: 2021_07_11_154041) do
     t.index ["matriculation_term_id"], name: "index_students_on_matriculation_term_id"
   end
 
-  create_table "term_plans", force: :cascade do |t|
-    t.integer "student_id", null: false
-    t.integer "course_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["course_id"], name: "index_term_plans_on_course_id"
-    t.index ["student_id"], name: "index_term_plans_on_student_id"
-  end
-
   add_foreign_key "academic_plans", "students"
   add_foreign_key "advisors", "colleges"
+  add_foreign_key "course_plans", "academic_plans"
+  add_foreign_key "course_plans", "courses"
   add_foreign_key "majors", "colleges"
   add_foreign_key "students", "advisors"
   add_foreign_key "students", "majors"
-  add_foreign_key "term_plans", "courses"
-  add_foreign_key "term_plans", "students"
 end

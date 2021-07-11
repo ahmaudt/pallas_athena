@@ -2,5 +2,5 @@
 
 <%= render 'form', academic_plan: @academic_plan %>
 
-<%= link_to 'Show', @academic_plan %> |
-<%= link_to 'Back', academic_plans_path %>
+<%= link_to 'Show', student_academic_plan_path(@student, @academic_plan) %> |
+<%= link_to 'Back', student_academic_plans_path %>

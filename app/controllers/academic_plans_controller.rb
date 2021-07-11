@@ -2,7 +2,7 @@
 
 # controller for AcademicPlans class
 class AcademicPlansController < ApplicationController
-  before_action :get_student
+  before_action :set_student
   before_action :set_academic_plan, only: %i[show edit update destroy]
 
   # GET /academic_plans or /academic_plans.json
@@ -17,7 +17,7 @@ class AcademicPlansController < ApplicationController
   def new
     # binding.pry
     @academic_plan = @student.academic_plans.build
-    7.times { @academic_plan.courses.build }
+    7.times { @academic_plan.courses.build(course_code: []) }
   end
 
   # GET /academic_plans/1/edit
@@ -25,6 +25,7 @@ class AcademicPlansController < ApplicationController
 
   # POST /academic_plans or /academic_plans.json
   def create
+    # binding.pry
     @academic_plan = @student.academic_plans.build(student_academic_plan_params)
 
     respond_to do |format|
@@ -53,9 +54,11 @@ class AcademicPlansController < ApplicationController
 
   # DELETE /academic_plans/1 or /academic_plans/1.json
   def destroy
+    @academic_plan = @student.academic_plans.find(params[:student_id])
+    binding.pry
     @academic_plan.destroy
     respond_to do |format|
-      format.html { redirect_to student_academic_plan_path(@academic_plan), notice: 'Academic plan was successfully destroyed.' }
+      format.html { redirect_to student_academic_plans_path, notice: 'Academic plan was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -64,7 +67,8 @@ class AcademicPlansController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
 
-  def get_student
+  def set_student
+    # binding.pry
     @student = Student.find(params[:student_id])
   end
 

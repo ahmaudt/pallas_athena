@@ -29,7 +29,7 @@ class AcademicPlansController < ApplicationController
 
     respond_to do |format|
       if @academic_plan.save
-        format.html { redirect_to @academic_plan, notice: 'Academic plan was successfully created.' }
+        format.html { redirect_to student_academic_plan_path(@student, @academic_plan), notice: 'Academic plan was successfully created.' }
         format.json { render :show, status: :created, location: @academic_plan }
       else
         format.html { render :new, status: :unprocessable_entity }

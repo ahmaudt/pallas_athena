@@ -25,9 +25,7 @@ class AcademicPlansController < ApplicationController
 
   # POST /academic_plans or /academic_plans.json
   def create
-    # binding.pry
     @academic_plan = @student.academic_plans.build(student_academic_plan_params)
-
     respond_to do |format|
       if @academic_plan.save
         format.html { redirect_to student_academic_plan_path(@student, @academic_plan), notice: 'Academic plan was successfully created.' }
@@ -66,7 +64,6 @@ class AcademicPlansController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
 
   def set_student
-    # binding.pry
     @student = Student.find(params[:student_id])
   end
 

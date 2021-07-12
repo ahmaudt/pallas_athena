@@ -70,6 +70,7 @@ class AcademicPlansController < ApplicationController
 
   def set_academic_plan
     @academic_plan = @student.academic_plans.find(params[:id])
+    7.times { @academic_plan.courses.build }
   end
 
   # Only allow a list of trusted parameters through.

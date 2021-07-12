@@ -19,10 +19,13 @@ class AcademicPlan < ApplicationRecord
   def courses_attributes=(courses_hash)
     courses_hash.values.each do |course_hash|
       if course_hash['course_code'].present?
-        binding.pry
         get_course = course_hash.values_at('course_code')
         advised_course = Course.find_or_create_by(course_code: get_course)
+        # below creates record in course_plans table with courses foreign key
         academic_plan_course = CoursePlan.find_or_create_by(course: advised_course)
+        # below creates record in course_plans table with academic_plan foreign key, enables record to be saved
+        # without this, the record will lack foreign key academic_plan_id and no courses will appear when
+        # courses method called on academic_plan object
         self.courses << advised_course
       end
     end

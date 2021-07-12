@@ -29,7 +29,7 @@
   </div>
 
   <div class="field">
-    <%= form.fields_for :advised_term, @academic_plan.build_advised_term do |advised| %>
+    <%= form.fields_for :advised_term do |advised| %>
       <%= advised.label :academic_term_code, 'Advised Term' %>
       <%= advised.text_field :academic_term_code, list: "academic_term_autocomplete" %>
         <datalist id="academic_term_autocomplete">

@@ -16,8 +16,9 @@ class AcademicPlansController < ApplicationController
   # GET /academic_plans/new
   def new
     # binding.pry
-    @academic_plan = @student.academic_plans.create
+    @academic_plan = @student.academic_plans.build
     7.times { @academic_plan.courses.build }
+    @academic_plan.build_advised_term
   end
 
   # GET /academic_plans/1/edit
@@ -26,7 +27,6 @@ class AcademicPlansController < ApplicationController
   # POST /academic_plans or /academic_plans.json
   def create
     @academic_plan = @student.academic_plans.create(student_academic_plan_params)
-    binding.pry
     respond_to do |format|
       if @academic_plan.save
         format.html { redirect_to student_academic_plan_path(@student, @academic_plan), notice: 'Academic plan was successfully created.' }

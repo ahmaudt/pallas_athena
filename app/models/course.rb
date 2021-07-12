@@ -1,4 +1,6 @@
 class Course < ApplicationRecord
+  attr_accessor :academic_plan_id
+
   belongs_to :course_term, class_name: 'AcademicTerm'
   has_many :course_plans
   has_many :academic_plans, through: :course_plans

@@ -16,8 +16,8 @@ class AcademicPlansController < ApplicationController
   # GET /academic_plans/new
   def new
     # binding.pry
-    @academic_plan = @student.academic_plans.build
-    7.times { @academic_plan.courses.build(course_code: []) }
+    @academic_plan = @student.academic_plans.create
+    7.times { @academic_plan.courses.build }
   end
 
   # GET /academic_plans/1/edit
@@ -25,7 +25,8 @@ class AcademicPlansController < ApplicationController
 
   # POST /academic_plans or /academic_plans.json
   def create
-    @academic_plan = @student.academic_plans.build(student_academic_plan_params)
+    @academic_plan = @student.academic_plans.create(student_academic_plan_params)
+    binding.pry
     respond_to do |format|
       if @academic_plan.save
         format.html { redirect_to student_academic_plan_path(@student, @academic_plan), notice: 'Academic plan was successfully created.' }
@@ -73,7 +74,7 @@ class AcademicPlansController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def student_academic_plan_params
-    params.require(:academic_plan).permit(:academic_plan_note, :student_id,
+    params.require(:academic_plan).permit(:academic_plan_note, :id,
                                           courses_attributes: [:course_code],
                                           advised_term_attributes: [:academic_term_code])
   end

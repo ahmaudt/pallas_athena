@@ -19,10 +19,11 @@ class AcademicPlan < ApplicationRecord
   def courses_attributes=(courses_hash)
     courses_hash.values.each do |course_hash|
       if course_hash['course_code'].present?
+        binding.pry
         get_course = course_hash.values_at('course_code')
         advised_course = Course.find_or_create_by(course_code: get_course)
-        academic_plan_course = CoursePlan.find_or_create_by(academic_plan: self, course: advised_course)
-        # self.courses << academic_plan_course
+        academic_plan_course = CoursePlan.find_or_create_by(course: advised_course)
+        self.courses << advised_course
       end
     end
   end

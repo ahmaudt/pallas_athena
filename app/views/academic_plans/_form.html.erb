@@ -1,4 +1,4 @@
-<%= form_with(model: [@student, academic_plan]) do |form| %>
+<%= form_with(model: [@student, @academic_plan]) do |form| %>
   <% if academic_plan.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(academic_plan.errors.count, "error") %> prohibited this academic_plan from being saved:</h2>
@@ -13,13 +13,14 @@
 
   <div class="field">
     <%= form.fields_for :courses do |course_form| %>
-      <%= course_form.label :course_code %>
-      <%= course_form.text_field :course_code, list: "course_code_autocomplete" %>
-        <datalist id="course_code_autocomplete">
-          <% Course.all.each do |course| %>
-            <option value="<%= course.course_code %>"><%= course.course_code %> - <%= course.course_title %></option>
-          <% end %>
-        </datalist>
+      <% course_form.hidden_field :id %>
+        <%= course_form.label :course_code %>
+        <%= course_form.text_field :course_code, list: "course_code_autocomplete" %>
+          <datalist id="course_code_autocomplete">
+            <% Course.all.each do |course| %>
+              <option value="<%= course.course_code %>"><%= course.course_code %> - <%= course.course_title %></option>
+            <% end %>
+          </datalist>
     <% end %>
   </div>
 

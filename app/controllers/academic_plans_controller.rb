@@ -22,7 +22,9 @@ class AcademicPlansController < ApplicationController
   end
 
   # GET /academic_plans/1/edit
-  def edit; end
+  def edit
+    7.times { @academic_plan.courses.build }
+  end
 
   # POST /academic_plans or /academic_plans.json
   def create
@@ -40,9 +42,10 @@ class AcademicPlansController < ApplicationController
 
   # PATCH/PUT /academic_plans/1 or /academic_plans/1.json
   def update
+    # binding.pry
     respond_to do |format|
       if @academic_plan.update(student_academic_plan_params)
-        format.html { redirect_to student_academic_plan_path(@academic_plan), notice: 'Academic plan was successfully updated.' }
+        format.html { redirect_to student_academic_plan_path(@student, @academic_plan), notice: 'Academic plan was successfully updated.' }
         format.json { render :show, status: :ok, location: @academic_plan }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -69,14 +72,15 @@ class AcademicPlansController < ApplicationController
   end
 
   def set_academic_plan
+    @student = Student.find(params[:student_id])
     @academic_plan = @student.academic_plans.find(params[:id])
-    7.times { @academic_plan.courses.build }
+    # @academic_plan.build_advised_term
   end
 
   # Only allow a list of trusted parameters through.
   def student_academic_plan_params
-    params.require(:academic_plan).permit(:academic_plan_note, :id,
-                                          courses_attributes: [:course_code],
-                                          advised_term_attributes: [:academic_term_code])
+    params.require(:academic_plan).permit(:academic_plan_note, :id, params[:student_id],
+                                          courses_attributes: %i[id course_code _destroy advised_term],
+                                          advised_term_attributes: %i[id academic_term_code _destroy])
   end
 end

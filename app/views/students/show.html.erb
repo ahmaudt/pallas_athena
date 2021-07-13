@@ -35,23 +35,24 @@
   <%= @student.advisor.first_name %>
 </p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Academic Plan</th>
-      <th>Advised Term</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @student.academic_plans.each do |plan| %>
-      <tr>
-        <td><%= link_to plan.academic_plan_note, student_academic_plan_path(@student, plan) %></td>
-        <td><%= plan.advised_term.academic_term %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<!--<table>-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--      <th>Academic Plan</th>-->
+<!--      <th>Advised Term</th>-->
+<!--    </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+    <%# @student.academic_plans.each do |plan| %>
+<!--      <tr>-->
+<!--        <td><%#= link_to plan.academic_plan_note, student_academic_plan_path(@student, plan) %></td>-->
+<!--        <td><%#= plan.advised_term.academic_term %></td>-->
+<!--      </tr>-->
+    <%# end %>
+<!--  </tbody>-->
+<!--</table>-->
 
 <%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'Back', students_path %> |
+<%= link_to 'View Academic Plans', student_academic_plans_path(@student) %> |
 <%= link_to 'New Academic Plan', new_student_academic_plan_path(@student) %>

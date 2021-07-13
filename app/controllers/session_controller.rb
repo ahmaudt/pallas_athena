@@ -2,7 +2,7 @@ class SessionController < ApplicationController
   def new; end
 
   def create
-    session[:username] = params[:username]
+    session[:advisor] = params[:advisor]
     redirect_to '/'
   end
 end

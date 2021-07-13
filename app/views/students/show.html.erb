@@ -45,7 +45,7 @@
   <tbody>
     <% @student.academic_plans.each do |plan| %>
       <tr>
-        <td><%= link_to plan.academic_plan_note, student_academic_plan_path(plan) %></td>
+        <td><%= link_to plan.academic_plan_note, student_academic_plan_path(@student, plan) %></td>
         <td><%= plan.advised_term.academic_term %></td>
       </tr>
     <% end %>

@@ -72,14 +72,14 @@ class AcademicPlansController < ApplicationController
   end
 
   def set_academic_plan
-    @student = Student.find(params[:student_id])
+    # @student = Student.find(params[:id])
     @academic_plan = @student.academic_plans.find(params[:id])
     # @academic_plan.build_advised_term
   end
 
   # Only allow a list of trusted parameters through.
   def student_academic_plan_params
-    params.require(:academic_plan).permit(:academic_plan_note, :id, params[:student_id],
+    params.require(:academic_plan).permit(:academic_plan_note, :id,
                                           courses_attributes: %i[id course_code _destroy advised_term],
                                           advised_term_attributes: %i[id academic_term_code _destroy])
   end

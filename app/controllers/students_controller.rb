@@ -10,7 +10,9 @@ class StudentsController < ApplicationController
   end
 
   # GET /students/1 or /students/1.json
-  def show; end
+  def show
+    return head(:forbidden) unless session.include? :advisor_id
+  end
 
   # GET /students/new
   def new

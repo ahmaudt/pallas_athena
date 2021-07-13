@@ -39,7 +39,7 @@
     <orderEntry type="library" scope="PROVIDED" name="activerecord (v6.1.4, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activestorage (v6.1.4, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v6.1.4, RVM: ruby-2.6.1) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="addressable (v2.7.0, RVM: ruby-2.6.1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="addressable (v2.8.0, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bcrypt (v3.1.16, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bindex (v0.8.1, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bootsnap (v1.7.5, RVM: ruby-2.6.1) [gem]" level="application" />
@@ -54,6 +54,7 @@
     <orderEntry type="library" scope="PROVIDED" name="erubi (v1.10.0, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.15.3, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v0.4.2, RVM: ruby-2.6.1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="hashie (v4.1.0, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.8.10, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jbuilder (v2.11.2, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="listen (v3.5.1, RVM: ruby-2.6.1) [gem]" level="application" />
@@ -66,23 +67,25 @@
     <orderEntry type="library" scope="PROVIDED" name="msgpack (v1.4.2, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.5.7, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.11.7, RVM: ruby-2.6.1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="omniauth (v2.0.4, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pry (v0.14.1, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="public_suffix (v4.0.6, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="puma (v5.3.2, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="racc (v1.5.2, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack (v2.2.3, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-mini-profiler (v2.3.2, RVM: ruby-2.6.1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rack-protection (v2.1.0, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-proxy (v0.7.0, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-test (v1.1.0, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails (v6.1.4, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails-dom-testing (v2.0.3, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails-html-sanitizer (v1.3.0, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="railties (v6.1.4, RVM: ruby-2.6.1) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rake (v13.0.3, RVM: ruby-2.6.1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rake (v13.0.6, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rb-fsevent (v0.11.0, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rb-inotify (v0.10.1, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="regexp_parser (v2.1.1, RVM: ruby-2.6.1) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rubyzip (v2.3.0, RVM: ruby-2.6.1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rubyzip (v2.3.2, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass-rails (v6.0.0, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sassc (v2.4.0, RVM: ruby-2.6.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sassc-rails (v2.1.2, RVM: ruby-2.6.1) [gem]" level="application" />

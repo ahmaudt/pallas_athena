@@ -13,7 +13,7 @@
 
 @college_1 = College.create(college_code: 'FACS', college_name: 'College of Family and Consumer Sciences')
 @major_1 = Major.create(major_code: 'HDFS', major_title: 'Human Developent and Family Science', college_id: @college_1.id)
-@advisor_1 = Advisor.create(first_name: 'Ahmaud', last_name: 'Templeton', college_id: @college_1.id)
+@advisor_1 = Advisor.create!(ugamyid: 'ahmaud', first_name: 'Ahmaud', last_name: 'Templeton', college_id: @college_1.id, password_digest: BCrypt::Password.create('password'))
 
 years = (2010...2122).to_a
 terms = ['Fall ', 'Spring ', 'Summer ']

@@ -1,4 +1,13 @@
 <%= form_with(model: @advisor) do |form| %>
-  <%= form.label :advisor %>
-  <%= form.text_field :advisor %>
+  <div class="field">
+    <%= form.label :ugamyid %>
+    <%= form.text_field :ugamyid %>
+  </div>
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation %>
+  </div>
+  <%= form.submit %>
 <% end %>

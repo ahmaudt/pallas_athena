@@ -6,6 +6,9 @@ class Student < ApplicationRecord
   belongs_to :advisor
   belongs_to :major
   has_many :academic_plans, dependent: :destroy
+  has_many :courses, through: :academic_plans
+  has_many :student_rosters
+  has_many :advisors, through: :student_rosters
 
   accepts_nested_attributes_for :matriculation_term
   accepts_nested_attributes_for :graduation_term

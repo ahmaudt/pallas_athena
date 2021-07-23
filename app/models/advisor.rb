@@ -8,7 +8,8 @@ class Advisor < ApplicationRecord
   # has_secure_password
 
   # belongs_to :college
-  has_many :students
+  has_many :student_rosters
+  has_many :students, through: :student_rosters
 
   # accepts_nested_attributes_for :college
 

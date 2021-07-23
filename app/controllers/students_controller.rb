@@ -2,17 +2,15 @@
 
 # Student controller class
 class StudentsController < ApplicationController
-  before_action :set_student, only: %i[show edit update destroy]
 
+  
   # GET /students or /students.json
   def index
     @students = Student.all
   end
 
   # GET /students/1 or /students/1.json
-  def show
-    return head(:forbidden) unless session.include? :advisor_id
-  end
+  def show; end
 
   # GET /students/new
   def new
@@ -63,15 +61,11 @@ class StudentsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
 
-  def set_student
-    @student = Student.find(params[:id])
-  end
-
   # Only allow a list of trusted parameters through.
 
   def student_params
-    params.require(:student).permit(:preferred_name, :last_name, :major_id, :advisor_id,:ugamyid,
-                                    matriculation_term_attributes: [:academic_term, :academic_term_code],
-                                    graduation_term_attributes: [:academic_term, :academic_term_code])
+    params.require(:student).permit(:preferred_name, :last_name, :major_id, :advisor_id, :ugamyid,
+                                    matriculation_term_attributes: %i[academic_term academic_term_code],
+                                    graduation_term_attributes: %i[academic_term academic_term_code])
   end
 end

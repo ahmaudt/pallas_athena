@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_11_154041) do
+ActiveRecord::Schema.define(version: 2021_07_17_113445) do
 
   create_table "academic_plans", force: :cascade do |t|
     t.text "academic_plan_note"
@@ -33,11 +33,17 @@ ActiveRecord::Schema.define(version: 2021_07_11_154041) do
     t.string "ugamyid"
     t.string "first_name"
     t.string "last_name"
-    t.string "password_digest"
-    t.integer "college_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["college_id"], name: "index_advisors_on_college_id"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "provider"
+    t.string "uid"
+    t.index ["email"], name: "index_advisors_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_advisors_on_reset_password_token", unique: true
   end
 
   create_table "colleges", force: :cascade do |t|
@@ -75,6 +81,15 @@ ActiveRecord::Schema.define(version: 2021_07_11_154041) do
     t.index ["college_id"], name: "index_majors_on_college_id"
   end
 
+  create_table "student_rosters", force: :cascade do |t|
+    t.integer "advisor_id", null: false
+    t.integer "student_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["advisor_id"], name: "index_student_rosters_on_advisor_id"
+    t.index ["student_id"], name: "index_student_rosters_on_student_id"
+  end
+
   create_table "students", force: :cascade do |t|
     t.string "ugamyid"
     t.string "preferred_name"
@@ -92,10 +107,11 @@ ActiveRecord::Schema.define(version: 2021_07_11_154041) do
   end
 
   add_foreign_key "academic_plans", "students"
-  add_foreign_key "advisors", "colleges"
   add_foreign_key "course_plans", "academic_plans"
   add_foreign_key "course_plans", "courses"
   add_foreign_key "majors", "colleges"
+  add_foreign_key "student_rosters", "advisors"
+  add_foreign_key "student_rosters", "students"
   add_foreign_key "students", "advisors"
   add_foreign_key "students", "majors"
 end

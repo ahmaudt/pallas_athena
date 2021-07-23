@@ -40,3 +40,4 @@ yarn-debug.log*
 .yarn-integrityx
 /db/development.sqlite3
 /db/schema.rb
+.env

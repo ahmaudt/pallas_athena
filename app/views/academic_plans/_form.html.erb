@@ -1,4 +1,4 @@
-<%= form_with(model: [@student, @academic_plan]) do |form| %>
+<%= bootstrap_form_for([@student, @academic_plan], layout: :floating) do |form| %>
   <% if academic_plan.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(academic_plan.errors.count, "error") %> prohibited this academic_plan from being saved:</h2>
@@ -6,41 +6,42 @@
       <ul>
         <% academic_plan.errors.each do |error| %>
           <li><%= error.full_message %></li>
-        <% end %>
+        <% end %>~
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.fields_for :courses do |course_form| %>
-      <% course_form.hidden_field :id %>
-        <%= course_form.label :course_code %>
-        <%= course_form.text_field :course_code, list: "course_code_autocomplete" %>
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <%= form.fields_for :courses, { layout: :floating, for: "floatingInput" } do |course_form| %>
+          <% course_form.hidden_field :id %>
+          <%#= course_form.label :floatingInput %>
+          <%= course_form.text_field :course_code, list: "course_code_autocomplete" %>
           <datalist id="course_code_autocomplete">
             <% Course.all.each do |course| %>
               <option value="<%= course.course_code %>"><%= course.course_code %> - <%= course.course_title %></option>
             <% end %>
           </datalist>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= form.label :academic_plan_note %>
-    <%= form.text_area :academic_plan_note %>
-  </div>
-
-  <div class="field">
-    <%= form.fields_for :advised_term do |advised| %>
-      <%= advised.label :academic_term_code, 'Advised Term' %>
-      <%= advised.text_field :academic_term_code, list: "academic_term_autocomplete" %>
-        <datalist id="academic_term_autocomplete">
-          <% AcademicTerm.all.each do |term| %>
-            <option value="<%= term.academic_term_code %>"><%= term.academic_term %></option>
+      <% end %>
+      </div>
+      <div class="col-3">
+        <div class="field">
+          <%= form.text_area :academic_plan_note, class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-floating">
+          <%= form.fields_for :advised_term do |advised| %>
+            <%= advised.text_field :academic_term_code, list: "academic_term_autocomplete", class: "form-control" %>
+            <datalist id="academic_term_autocomplete">
+              <% AcademicTerm.all.each do |term| %>
+                <option value="<%= term.academic_term_code %>"><%= term.academic_term %></option>
+              <% end %>
+            </datalist>
           <% end %>
-        </datalist>
-    <% end %>
-  </div>
-
+        </div>
+      </div>
 
 
 <!--  <div class="field">-->
@@ -52,3 +53,7 @@
     <%= form.submit %>
   </div>
 <% end %>
+</div>
+</div>
+
+<%= console %>

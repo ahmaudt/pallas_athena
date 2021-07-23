@@ -1,5 +1,4 @@
 class AdvisorsController < ApplicationController
-  before_action :set_advisor, only: %i[ show edit update destroy ]
 
   # GET /advisors or /advisors.json
   def index
@@ -7,8 +6,7 @@ class AdvisorsController < ApplicationController
   end
 
   # GET /advisors/1 or /advisors/1.json
-  def show
-  end
+  def show; end
 
   # GET /advisors/new
   def new
@@ -16,8 +14,7 @@ class AdvisorsController < ApplicationController
   end
 
   # GET /advisors/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /advisors or /advisors.json
   def create
@@ -56,14 +53,19 @@ class AdvisorsController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_advisor
-      @advisor = Advisor.find(params[:id])
-    end
+  def self.from_google(email:, full_name:, uid:, avatar_url:)
+    return nil unless email =~ /@google.com\z/
+    create_with(uid: uid, full_name: full_name, avatar_url: avatar_url).find_or_create_by!(email: email)
+  end
 
-    # Only allow a list of trusted parameters through.
-    def advisor_params
-      params.require(:advisor).permit(:first_name, :last_name, :college_id, :ugamyid, college_attributes: [:college_code])
-    end
+  private
+  # Use callbacks to share common setup or constraints between actions.
+
+  # Only allow a list of trusted parameters through.
+  def advisor_params
+    params.require(:advisor).permit(:first_name, :last_name, :college_id,
+                                    :ugamyid, :password,
+                                    :password_confirmation,
+                                    college_attributes: [:college_code])
+  end
 end

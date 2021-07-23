@@ -23,6 +23,16 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 gem 'pry', '~> 0.14.1'
 gem 'omniauth', '~> 2.0', '>= 2.0.4'
+# gem 'omniauth-twitter', '~> 1.4'
+gem 'omniauth-google-oauth2', '~> 1.0'
+# gem 'omniauth-apple', '~> 1.0', '>= 1.0.2'
+gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
+gem 'omniauth-rails_csrf_protection', '~> 1.0'
+gem 'devise', '~> 4.8'
+gem 'bootstrap', '~> 5.0', '>= 5.0.1'
+gem 'jquery-rails'
+gem "bootstrap_form", "~> 4.0"
+
 
 
 # Use Active Storage variant

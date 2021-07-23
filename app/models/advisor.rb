@@ -1,11 +1,38 @@
 class Advisor < ApplicationRecord
-  has_secure_password
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  validates :ugamyid, uniqueness: true
+  validates :email, uniqueness: true
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[google_oauth2]
+  # has_secure_password
 
-  belongs_to :college
-  has_many :students, dependent: :destroy # if advisor deleted, it no longer has student, so student deleted
-  has_many :academic_plans, dependent: :destroy
+  # belongs_to :college
+  has_many :students
 
-  accepts_nested_attributes_for :college
+  # accepts_nested_attributes_for :college
+
+  def email_required?
+    false
+  end
+
+  def email_changed?
+    false
+  end
+
+  def self.from_omniauth(auth)
+    @advisor = Advisor.find_by(email: auth.info.email)
+    if @advisor
+      @advisor.provider = auth.provider
+      @advisor.uid = auth.uid
+      @advisor.save
+    else
+      @advisor = Advisor.where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+        user.email = auth.info.email
+        user.password = Devise.friendly_token[0,20]
+      end
+    end
+  end
 
   def college_attributes=(college_hash)
     if college_hash["college_code"].present?
